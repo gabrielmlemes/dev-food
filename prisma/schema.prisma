@@ -1,4 +1,3 @@
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -8,16 +7,16 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model Restaurant {
-  id String @id  @default(uuid())
+  id String @id @default(uuid())
   name String
   imageUrl String
-  deliveryFee Decimal @db.decimal(10, 2)
+  deliveryFee Decimal @db.Decimal(10, 2)
   deliveryTimeMinutes Int
   categories  Category[]
   products Product[]
 }
+
 model Category {
   id String @id @default(uuid())
   name String
@@ -31,9 +30,10 @@ model Product {
   name String
   description String
   imageUrl String
-  price Decimal  @db.Decimal(10, 2)
+  price Decimal @db.Decimal(10, 2)
   discountPercentage Int @default(0)
   restaurantId String
   restaurant Restaurant @relation(fields: [restaurantId], references: [id])
+  categoryId String
   category Category @relation(fields: [categoryId], references: [id])
 }
