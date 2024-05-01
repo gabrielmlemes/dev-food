@@ -1,5 +1,13 @@
-import Header from "@/components/ui/header";
+import Header from "@/components/header";
+import Search from "@/components/search";
 
 export default function Home() {
-  return <Header />;
+  return (
+    <>
+      <Header />
+      <div className="pt6 px-5">
+        <Search />
+      </div>
+    </>
+  );
 }
